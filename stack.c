@@ -67,6 +67,14 @@ int *peek(Stack *thestack)
     return result;
 }
 
+bool isempty(Stack *thestack)
+{
+    if (thestack->currentsize <= 0)
+        return true;
+    else
+        return false;
+}
+
 /*
     prints out current stack status
 */
