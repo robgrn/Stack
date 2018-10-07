@@ -32,28 +32,39 @@ void push(Stack *thestack, int value)
 }
 
 /*
-    looks at the top item on the stack
+    removes and returns the top item
 */
-int peek(Stack *thestack)
+int *pop(Stack *thestack)
 {
-    if (thestack->currentsize <= 0)
-        return -1;
+    int *result;
     
-    return *(thestack->stack + thestack->currentsize - 1);
+    if (thestack->currentsize <= 0)
+        result = NULL;
+    else
+    {
+        result = malloc(sizeof(*result));
+        *result = *(thestack->stack + (thestack->currentsize - 1));
+        thestack->currentsize--;
+    }
+    
+    return result;
 }
 
 /*
-    removes and returns the top item
+    Looks at the top item on the stack.
+    result will need to be free'd when the stack isn't empty
 */
-int pop(Stack *thestack)
+int *peek(Stack *thestack)
 {
+    int *result;
+    
     if (thestack->currentsize <= 0)
-        return -1;
+        result = NULL;
     
-    int top = *(thestack->stack + thestack->currentsize - 1);
-    thestack->currentsize--;
+    result = malloc(sizeof(*result));
+    *result = *(thestack->stack + thestack->currentsize - 1);
     
-    return top;
+    return result;
 }
 
 /*
