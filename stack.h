@@ -10,7 +10,7 @@ typedef struct stack
 } Stack;
 
 Stack createstack(); // points to a new stack
-void push(Stack *thestack, int value); // adds a new value on the stack
+bool push(Stack *thestack, int value); // adds a new value on the stack
 bool pop(Stack *thestack, int *result); // removes a value from the stack
 int *peek(Stack *thestack); // sees what value is on top of the stack
 bool isempty(Stack *thestack);

@@ -19,16 +19,18 @@ Stack createstack()
 /*
     adds an item to the stack
 */
-void push(Stack *thestack, int value)
+bool push(Stack *thestack, int value)
 {
     if (thestack->currentsize < thestack->maxsize)
     {
         *(thestack->stack + thestack->currentsize) = value;
         thestack->currentsize++;
+        
+        return true;
     }
     else
     {
-        printf("The stack is full.\n");
+        return false;
     }
 }
 

@@ -9,15 +9,12 @@ void popped_result(int *popped);
 int main(int argc, char *argv[])
 {
     Stack s = createstack();
-    push(&s, 2);
+    printf("Pushed? %s\n", push(&s, 2) ? "True" : "False");
+    
     int *result = malloc(sizeof(*result));
     bool check = pop(&s, result);
     printf("popped? %s\n", check ? "True" : "False");
     printf("popped: %d\n", *result);
-    
-    check = pop(&s, result);
-    printf("popped? %s\n", check ? "True" : "False");
-    printf("popped: %d\n", *result); // just uses the previous result
     
     free(result);
     
