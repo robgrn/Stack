@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "stack.h"
 
 /*
@@ -34,20 +35,19 @@ void push(Stack *thestack, int value)
 /*
     removes and returns the top item
 */
-int *pop(Stack *thestack)
+bool pop(Stack *thestack, int *result)
 {
-    int *result;
-    
-    if (thestack->currentsize <= 0)
-        result = NULL;
-    else
+    if (thestack->currentsize > 0)
     {
-        result = malloc(sizeof(*result));
         *result = *(thestack->stack + (thestack->currentsize - 1));
         thestack->currentsize--;
+        
+        return true;
     }
-    
-    return result;
+    else
+    {
+        return false;
+    }
 }
 
 /*
