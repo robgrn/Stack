@@ -56,17 +56,18 @@ bool pop(Stack *thestack, int *result)
     Looks at the top item on the stack.
     result will need to be free'd when the stack isn't empty
 */
-int *peek(Stack *thestack)
+bool peek(Stack *thestack, int *result)
 {
-    int *result;
-    
-    if (thestack->currentsize <= 0)
-        result = NULL;
-    
-    result = malloc(sizeof(*result));
-    *result = *(thestack->stack + thestack->currentsize - 1);
-    
-    return result;
+    if (thestack->currentsize > 0)
+    {
+        *result = *(thestack->stack + (thestack->currentsize - 1));
+        
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool isempty(Stack *thestack)

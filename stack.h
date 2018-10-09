@@ -12,6 +12,6 @@ typedef struct stack
 Stack createstack(); // points to a new stack
 bool push(Stack *thestack, int value); // adds a new value on the stack
 bool pop(Stack *thestack, int *result); // removes a value from the stack
-int *peek(Stack *thestack); // sees what value is on top of the stack
+bool peek(Stack *thestack, int *result); // sees what value is on top of the stack
 bool isempty(Stack *thestack);
 void stackinfo(Stack *thestack); // print the current stack status

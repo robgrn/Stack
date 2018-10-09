@@ -9,12 +9,12 @@ void popped_result(int *popped);
 int main(int argc, char *argv[])
 {
     Stack s = createstack();
-    printf("Pushed? %s\n", push(&s, 2) ? "True" : "False");
+    push(&s, 3);
+    push(&s, 7);
     
     int *result = malloc(sizeof(*result));
-    bool check = pop(&s, result);
-    printf("popped? %s\n", check ? "True" : "False");
-    printf("popped: %d\n", *result);
+    peek(&s, result);
+    printf("peeked: %d\n", *result);
     
     free(result);
     
