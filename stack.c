@@ -84,9 +84,11 @@ bool isempty(Stack *stack)
 */
 bool destroy(Stack *stack)
 {
-    if (!stack->array)
+    if (stack->array)
     {
-        free(stack->array)
+        free(stack->array);
+        stack->array = NULL;
+        
         return true;
     }
     else
