@@ -79,6 +79,23 @@ bool isempty(Stack *stack)
 }
 
 /*
+    Frees the memory used for the stack items.
+    True is returned if the stack array was freed, otherwise false is returned.
+*/
+bool destroy(Stack *stack)
+{
+    if (!stack->array)
+    {
+        free(stack->array)
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/*
     prints out current stack status
 */
 void stackinfo(Stack *stack)
