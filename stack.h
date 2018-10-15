@@ -4,14 +4,14 @@
 
 typedef struct stack
 {
-    int maxsize;
-    int currentsize;
-    int* stack;
+    int capacity;
+    int size;
+    int* array;
 } Stack;
 
 Stack createstack(); // points to a new stack
-bool push(Stack *thestack, int value); // adds a new value on the stack
-bool pop(Stack *thestack, int *result); // removes a value from the stack
-bool peek(Stack *thestack, int *result); // sees what value is on top of the stack
-bool isempty(Stack *thestack);
-void stackinfo(Stack *thestack); // print the current stack status
+bool push(Stack *stack, int value); // adds a new value on the stack
+bool pop(Stack *stack, int *result); // removes a value from the stack
+bool peek(Stack *stack, int *result); // sees what value is on top of the stack
+bool isempty(Stack *stack);
+void stackinfo(Stack *stack); // print the current stack status

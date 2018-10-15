@@ -9,9 +9,9 @@
 Stack createstack()
 {
     Stack s;
-    s.maxsize = INITIALSIZE;
-    s.currentsize = 0;
-    s.stack = calloc(sizeof(int), INITIALSIZE);
+    s.capacity = INITIALSIZE;
+    s.size = 0;
+    s.array = calloc(sizeof(int), INITIALSIZE);
     
     return s;
 }
@@ -19,12 +19,12 @@ Stack createstack()
 /*
     adds an item to the stack
 */
-bool push(Stack *thestack, int value)
+bool push(Stack *stack, int value)
 {
-    if (thestack->currentsize < thestack->maxsize)
+    if (stack->size < stack->capacity)
     {
-        *(thestack->stack + thestack->currentsize) = value;
-        thestack->currentsize++;
+        *(stack->array + stack->size) = value;
+        stack->size++;
         
         return true;
     }
@@ -37,12 +37,12 @@ bool push(Stack *thestack, int value)
 /*
     removes and returns the top item
 */
-bool pop(Stack *thestack, int *result)
+bool pop(Stack *stack, int *result)
 {
-    if (thestack->currentsize > 0)
+    if (stack->size > 0)
     {
-        *result = *(thestack->stack + (thestack->currentsize - 1));
-        thestack->currentsize--;
+        *result = *(stack->array + (stack->size - 1));
+        stack->size--;
         
         return true;
     }
@@ -56,11 +56,11 @@ bool pop(Stack *thestack, int *result)
     Looks at the top item on the stack.
     result will need to be free'd when the stack isn't empty
 */
-bool peek(Stack *thestack, int *result)
+bool peek(Stack *stack, int *result)
 {
-    if (thestack->currentsize > 0)
+    if (stack->size > 0)
     {
-        *result = *(thestack->stack + (thestack->currentsize - 1));
+        *result = *(stack->array + (stack->size - 1));
         
         return true;
     }
@@ -70,9 +70,9 @@ bool peek(Stack *thestack, int *result)
     }
 }
 
-bool isempty(Stack *thestack)
+bool isempty(Stack *stack)
 {
-    if (thestack->currentsize <= 0)
+    if (stack->size <= 0)
         return true;
     else
         return false;
@@ -81,9 +81,9 @@ bool isempty(Stack *thestack)
 /*
     prints out current stack status
 */
-void stackinfo(Stack *thestack)
+void stackinfo(Stack *stack)
 {
-    printf("maxsize: %d\n", thestack->maxsize);
-    printf("currentsize: %d\n", thestack->currentsize);
-    printf("stack: %p\n", thestack->stack);
+    printf("capacity: %d\n", stack->capacity);
+    printf("size: %d\n", stack->size);
+    printf("stack: %p\n", stack->array);
 }
